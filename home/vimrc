@@ -1,0 +1,122 @@
+set nocompatible              " be iMproved
+filetype off                  " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" colorschemes
+Bundle 'chriskempson/base16-vim'
+Bundle 'zeis/vim-kolor'
+
+" session management
+Bundle 'tpope/vim-obsession'
+
+" improved status-line
+Bundle 'bling/vim-airline'
+
+" syntax checking & autocompletion
+Bundle 'Valloric/YouCompleteMe'
+
+" buffer management
+Bundle 'techlivezheng/vim-plugin-minibufexpl'
+
+" file browser
+Bundle 'scrooloose/nerdtree'
+
+filetype plugin indent on
+
+" color/font options
+"
+if has("gui_running")
+    colorscheme base16-monokai
+    set guifont=Source\ Code\ Pro\ Semibold\ 8
+    set lsp=-1
+else
+    colorscheme kolor
+endif
+
+" always enable airline and its fonts
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+" fallback semantic completion options
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" redefine keys
+"let g:ycm_key_list_select_completion = ['<TAB>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>']
+" close preview windows
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 0
+
+" don't highlight search results
+set nohlsearch
+" unless while entering a new one
+set incsearch
+
+" show tabs and trailing spaces
+set list
+set listchars=tab:>-,trail:-
+
+" leave 8 lines/columns for context
+set scrolloff=8
+set sidescrolloff=8
+
+" case insensitive search
+set ignorecase
+set smartcase
+
+" tabulation
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set shiftround
+set expandtab
+
+" show command being executed
+set showcmd
+
+" allow hidden buffers
+set hidden
+
+" always show MiniBufExplorer
+let g:miniBufExplBuffersNeeded = 1
+
+" GUI options
+if has('gui_running')
+    " disable toolbar
+    set go-=T
+    " disable right scrollbar
+    set go-=r
+    " disable left scrollbar
+    set go-=L
+    " disable tearoff menus
+    set go-=t
+    " use console choice dialogs instead of popups for simple choices
+    set go+=c
+    " disable icon
+    set go-=i
+    " dont show grey/inactive menus
+    set go-=g
+    " start with the menubar hidden
+    set go-=m
+    " but have a function to toggle it
+    function! ToggleMenuBar()
+        if &guioptions =~# 'm'
+            set go-=m
+        else
+            set go+=m
+        endif
+    endfunction
+    " which we will bind to F11
+    map <silent> <F11> :call ToggleMenuBar()<CR>
+endif
+
+" wild menu for command mode
+set wildchar=<TAB> wildmenu wildmode=full
+set wildignore=*.bak,*.py[co],*.o,*.obj,*.a,*.pdf,*.jpg,*.gif,*.png,*.avi,*.mkv,*.flac,*.mp3,*.so,.svn,.git,*.swp,*~
+
+" keybinds
+nnoremap <F2> :NERDTreeToggle<CR>

@@ -1,0 +1,7 @@
+[user]
+	name = Antanas Uršulis
+	email = antanas@cantab.net
+[push]
+	default = simple
+[color]
+	ui = true

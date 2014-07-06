@@ -1,0 +1,38 @@
+alignment top_right
+gap_y 0
+gap_x 16
+
+background no
+cpu_avg_samples 2
+default_color ACE7E1
+double_buffer yes
+draw_shades no
+use_xft yes
+xftfont OxygenSans-10
+#minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+own_window yes
+own_window_title conky
+own_window_class Conky
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+update_interval 1.0
+
+TEXT
+${color ffffff}${font URW Gothic L-100}${time %H}${font}${color}
+${offset 145}${voffset -120}${color dae7e6}${font URW Gothic L-40}${time %M}${font}${color}
+${offset 205}${voffset -50}${color c4e7e3}${font URW Gothic L-15}${time %S}${font}${color}
+${offset 145}${voffset 60}${font URW Gothic L-20}${time %Y-%m-%d}${font}
+${color ffffff}${hr}${color}
+${voffset 0}This is${goto 125}${color ffffff}${nodename} - ${kernel}${color}
+up for${goto 125}${color ffffff}${uptime}${color}
+cores clocked at${goto 125}${color ffffff}${freq 1}${color}${goto 160}${color ffffff}${freq 2}${color}${goto 190}MHz${voffset 1}
+${cpubar 13}${goto 10}${voffset -1}${color 333333}CPU${goto 125}${cpu}%${color}${voffset 1}
+${membar 13}${goto 10}${voffset -1}${color 333333}RAM${goto 125}${mem}/${memmax}${color}${voffset 1}
+${swapbar 13}${goto 10}${voffset -1}${color 333333}Swap${goto 125}${swap}/${swapmax}${color}${voffset 1}
+/ ${goto 120}${fs_bar 13 /}${goto 125}${voffset -1}${color 333333}${fs_used /}/${fs_size /}${color}${voffset 1}
+/mnt/windows ${goto 120}${fs_bar 13 /mnt/windows}${goto 125}${voffset -1}${color 333333}${fs_used /mnt/windows}/${fs_size /mnt/windows}${color}${voffset 1}
+/var/tmp/portage ${goto 120}${fs_bar 13 /var/tmp/portage}${goto 125}${voffset -1}${color 333333}${fs_used /var/tmp/portage}/${fs_size /var/tmp/portage}${color}${voffset 1}
